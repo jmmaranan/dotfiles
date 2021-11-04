@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 if [[ -z $STOW_FOLDERS ]]; then
     STOW_FOLDERS="i3,nvim,vim,tmux,zsh,intellij"
 fi
