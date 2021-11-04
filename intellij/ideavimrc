@@ -1,0 +1,64 @@
+let mapleader = " "
+
+nnoremap gd :action GotoDeclaration<cr>
+nnoremap gf :action GotoFile<cr>
+nnoremap gi :action GotoImplementation<cr>
+nnoremap gh :action Back<cr>
+nnoremap gl :action Forward<cr>
+nnoremap gt :action GotoTest<cr>
+nnoremap gs :action EditSource<cr>
+nnoremap gb :action JumpToLastChange<cr>
+nnoremap ge :action GotoNextError<cr>
+
+nnoremap <leader>wsl :action MoveTabRight<cr>
+nnoremap <leader>wsj :action MoveTabDown<cr>
+nnoremap <leader>wsp :action MoveEditorToOppositeTabGroup<cr>
+nnoremap <leader>wsu :action UnsplitAll<cr>
+nnoremap <leader>wh :action PrevSplitter<cr>
+nnoremap <leader>wl :action NextSplitter<cr>
+nnoremap <leader>tl :tabnext<cr>
+nnoremap <leader>th :tabprevious<cr>
+nnoremap <leader>pp :action PinActiveEditorTab<cr>
+
+nnoremap <leader>re :action RenameElement<cr>
+vnoremap <leader>re :action RenameElement<cr>
+nnoremap <leader>rs :action ChangeSignature<cr>
+vnoremap <leader>rs :action ChangeSignature<cr>
+nnoremap <leader>fc :action ReformatCode<cr>
+vnoremap <leader>fc :action ReformatCode<cr>
+nnoremap <leader>oo :action OptimizeImports<cr>
+vnoremap <leader>oo :action OptimizeImports<cr>
+
+nnoremap <leader>rr :action Run<cr>
+nnoremap <leader>rc :action RunClass<cr>
+nnoremap <leader>rg :action ChooseRunConfiguration<cr>
+nnoremap <leader>rw :action ActivateRunToolWindow<cr>
+nnoremap <leader>dr :action Debug<cr>
+nnoremap <leader>dc :action DebugClass<cr>
+nnoremap <leader>dg :action ChooseDebugConfiguration<cr>
+nnoremap <leader>dw :action ActivateDebugToolWindow<cr>
+
+nnoremap <leader><space> :action SearchEverywhere<cr>
+nnoremap <leader>ff :action FindInPath<cr>
+vnoremap <leader>ff :action FindInPath<cr>
+nnoremap <leader>fr :action ReplaceInPath<cr>
+vnoremap <leader>fr :action ReplaceInPath<cr>
+
+" Version Control
+nnoremap <leader>cc :action CommentByBlockComment<cr>
+vnoremap <leader>cc :action CommentByBlockComment<cr>
+nnoremap <leader>cl :action CommentByLineComment<cr>
+vnoremap <leader>cl :action CommentByLineComment<cr>
+nnoremap <leader>gs :action Vcs.ShowHistoryForBlock<cr>
+vnoremap <leader>gs :action Vcs.ShowHistoryForBlock<cr>
+nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<cr>
+
+" Clipboard Management
+nnoremap yy "+yy
+vnoremap y "+y
+nnoremap p "+p
+vnoremap p "+p
+nnoremap P "+P
+vnoremap P "+P
+nnoremap d "+d
+vnoremap d "+d

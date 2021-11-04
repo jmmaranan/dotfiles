@@ -1,0 +1,55 @@
+export XDG_CONFIG_HOME=$HOME/.config
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/bin:$GOBIN
+
+gitfolder=$HOME/workspace/gitprojects
+
+# functions here
+function commands() {
+  awk '{a[$2]++}END{for(i in a){print a[i] " " i}}'
+}
+
+function first_install() {
+  sudo head -n1 /var/log/installer/syslog
+}
+
+# TODO - get a list of golang versions from golang.org
+function go_update() {
+  local version=$1
+  local current_dir=$PWD
+  if [[ -n $version ]]; then
+    cd $HOME/Downloads
+    local go_file=go$version.linux-amd64.tar.gz
+    curl -o $go_file https://dl.google.com/go/$go_file
+    sudo rm -rf "/usr/local/go"
+    sudo tar -C "/usr/local" -xzf $go_file
+    cd $current_dir # go back to the previous directory before update
+  fi
+}
+
+function create_quarkus_app() {
+  local version=$1 #1.11.1
+  local group_id=$2 # org.example
+  local artifact_id=$3 # getting-started
+  local app_name=$4 #GreetingsResource
+
+  mvn io.quarkus:quarkus-maven-plugin:$version.Final:create \
+    -DprojectGroupId=$group_id \
+    -DprojectArtifactId=$artifact_id \
+    -DclassName="$group_id.$artifact_id.$app_name" \
+    -Dpath="/hello"
+  cd $artifact_id
+}
+
+# aliases here
+alias gitprojects="mkdir -p $gitfolder && $gitfolder"
+alias apt_pref="sudo vim /etc/apt/preferences"
+alias apt_src_list="sudo vim /etc/apt/sources.list"
+# alias conkyrc="vim $HOME/.conkyrc"
+alias svelte_app="npx degit sveltejs/template "
+# alias sapper_app='npx degit "sveltejs/sapper-template#rollup" '
+alias upgrades='sudo apt update && apt list --upgradable'
+alias upgrade='sudo apt upgrade'
+alias topten="history | commands | sort -rn | head"
+alias zsh_cfg="vim $HOME/.zshrc"

@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+function distro() {
+    echo $(cat /etc/*release | grep ^ID= | awk '{print substr($0, 4)}')
+}
