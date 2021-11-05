@@ -16,6 +16,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.zsh_profile
 
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
