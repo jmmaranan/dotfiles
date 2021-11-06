@@ -2,7 +2,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export N_PREFIX=$HOME/.local/n
-export PATH=$PATH:/usr/local/go/bin:$HOME/bin:$GOBIN:$N_PREFIX/bin/
+export GIT_EDITOR=vim
 
 gitfolder=$HOME/workspace/gitprojects
 
@@ -43,6 +43,18 @@ function create_quarkus_app() {
   cd $artifact_id
 }
 
+function addToPath() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$PATH:$1
+    fi
+}
+
+function addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
 # aliases here
 alias gitprojects="mkdir -p $gitfolder && $gitfolder"
 alias apt_pref="sudo vim /etc/apt/preferences"
@@ -54,3 +66,8 @@ alias upgrades='sudo apt update && apt list --upgradable'
 alias upgrade='sudo apt upgrade'
 alias topten="history | commands | sort -rn | head"
 alias zsh_cfg="vim $HOME/.zshrc"
+
+addToPath /usr/local/go/bin
+addToPath $HOME/bin
+addToPath $GOBIN
+addToPath $N_PREFIX/bin
